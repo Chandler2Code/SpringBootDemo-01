@@ -1,0 +1,12 @@
+drop table if exists hero;
+create table `hero` (
+    `id` varchar(12)  not null comment '姓名id',
+    `name` varchar(12)  not null comment '姓名name',
+    `sex` varchar(12) not null comment '性别sex',
+    `viability` int(10)  null comment '生存能力viability',
+    `skillEffect` int(10)  null comment '技能效果',
+    `attackCapability` int(10)  null comment '攻击力',
+    `difficultStart` int(10)  null comment '上手难度',
+    `recommendations` varchar(256)  null comment '使用简介',
+     primary key (`id`)
+)
