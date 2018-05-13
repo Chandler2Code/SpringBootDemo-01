@@ -16,9 +16,9 @@
     <insert id="addHero" parameterType="com.czyfwpla.demo01.model.Hero" >
         INSERT INTO
         hero
-        (id,name,sex,viability)
+        (id,name,sex,viability,skillEffect,attackCapability,difficultStart,recommendations)
         VALUES
-        (#{id}, #{name},#{sex},#{viability})
+        (#{id}, #{name},#{sex},#{viability},#{skillEffect}, #{attackCapability},#{difficultStart},#{recommendations})
     </insert>
     <select id="selectHero" resultMap="BaseResultMap" parameterType="java.lang.String">
         SELECT *
@@ -35,6 +35,15 @@
     <select id="selectAllHero" resultMap="BaseResultMap">
         SELECT *
         FROM hero
+    </select>
+    <select id="countHero" resultType="int">
+        SELECT COUNT(*)
+        FROM hero
+    </select>
+    <select id="selectSomeHero" resultMap="BaseResultMap" parameterType="int">
+        SELECT *
+        FROM hero
+        limit #{firstIndex},#{pageSize}
     </select>
     <delete id="deleteHeroByName" parameterType="java.lang.String">
         DELETE
