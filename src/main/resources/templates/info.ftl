@@ -10,7 +10,15 @@
     </div>
     <div class="infoAdd">
         <div class="col-md-12 column">
-            <button type="button" class="btn btn-default btn-primary" onclick="addHero()">新增</button>
+            <div class="pull-left">
+                <input type="text" class="form-control" id="sname" placeholder="输入英雄名字查询">
+            </div>
+            <div class="pull-left">
+                <button type="button" class="btn btn-default btn-primary" id="select" style="margin-left:-30px">查询</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-default btn-primary" onclick="addHero()">新增</button>
+            </div>
         </div>
     </div>
     <div class="infoContent">
@@ -44,8 +52,8 @@
                             <th>
                                 使用简介
                             </th>
-                            <th>
-
+                            <th style="text-align: center">
+                                操作
                             </th>
                         </tr>
                         </thead>
@@ -139,6 +147,7 @@
 var deleUrl="/demo01/hero/delete?id=";
 var pageUrl="/demo01/hero/info?currentPage=";
 var updateUrl="/demo01/hero/update?id=";
+var selectUrl="/demo01/hero/select?name=";
 $(function () {
     var currentpage = ${result.getPageCount()};
     if(currentpage<=1){
@@ -149,6 +158,10 @@ $(function () {
     }
     $("#goBack").click(function () {
         $("#add").hide();
+    })
+    $("#select").click(function () {
+        var name=$("#sname").val();
+        location.href=selectUrl+name;
     })
  })
     function deleteHoerById(id) {

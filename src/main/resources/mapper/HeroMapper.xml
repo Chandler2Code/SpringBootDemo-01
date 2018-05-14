@@ -32,18 +32,27 @@
         WHERE
         id = #{id,jdbcType=VARCHAR}
     </select>
-    <select id="selectAllHero" resultMap="BaseResultMap">
-        SELECT *
-        FROM hero
-    </select>
-    <select id="countHero" resultType="int">
-        SELECT COUNT(*)
-        FROM hero
-    </select>
-    <select id="selectSomeHero" resultMap="BaseResultMap" parameterType="int">
+    <select id="selectPageHero" resultMap="BaseResultMap" parameterType="int">
         SELECT *
         FROM hero
         limit #{firstIndex},#{pageSize}
+    </select>
+    <select id="selectHeroCount" resultMap="BaseResultMap" parameterType="int">
+        SELECT *
+        FROM hero
+    </select>
+    <select id="selectPageHeroByName" resultMap="BaseResultMap" parameterType="com.czyfwpla.demo01.util.Page">
+        SELECT *
+        FROM hero
+        WHERE
+        name LIKE CONCAT('%',#{keyWord_1,jdbcType=VARCHAR},'%')
+        limit #{firstIndex},#{pageSize}
+    </select>
+    <select id="selectSomeHeroByNameCount" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT *
+        FROM hero
+        WHERE
+        name LIKE CONCAT('%',#{name,jdbcType=VARCHAR},'%')
     </select>
     <delete id="deleteHeroById" parameterType="java.lang.String">
         DELETE

@@ -64,4 +64,15 @@ public class HeroController {
         modelAndView.addObject("result",hero);
         return modelAndView;
     }
+    @RequestMapping("select")
+    public ModelAndView select(@RequestParam("name") String name,
+                               @RequestParam(defaultValue = "1",value = "currentPage")Integer currentPage,
+                               @RequestParam(defaultValue = "10",value = "pageSize")Integer pageSize){
+        ModelAndView mv = new ModelAndView("info");
+        Page<Hero>heroPage=heroService.selcetPageHeroByName(currentPage,pageSize,name);
+        mv.addObject("result",heroPage);
+        return mv;
+
+
+    }
 }

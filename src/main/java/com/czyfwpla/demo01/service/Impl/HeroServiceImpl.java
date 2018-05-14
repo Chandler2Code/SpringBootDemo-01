@@ -30,19 +30,10 @@ public class HeroServiceImpl implements HeroService {
         return heroMapper.selectHero(name);
     }
 
-    @Override
-    public List<Hero> selectAllHero() {
-        return heroMapper.selectAllHero();
-    }
 
     @Override
     public void deleteHeroById(String id) {
         heroMapper.deleteHeroById(id);
-    }
-
-    @Override
-    public void updateHero(Hero hero) {
-        heroMapper.updateHero(hero);
     }
 
     @Override
@@ -58,11 +49,20 @@ public class HeroServiceImpl implements HeroService {
         //构造Page
 
         //查询出总数
-        int heroCount = heroMapper.countHero();
+        int heroCount = heroMapper.selectHeroCount().size();
         //计算分页
         Page<Hero>heroPage = (Page)PageUtil.queryPage(currentPage,heroCount,pageSize);
+        List<Hero>heroList=heroMapper.selectPageHero(heroPage);
+        heroPage.setList(heroList);
+        return heroPage;
+    }
 
-        List<Hero>heroList=heroMapper.selectSomeHero(heroPage);
+    @Override
+    public Page<Hero> selcetPageHeroByName(Integer currentPage, int pageSize,String name) {
+        int count = heroMapper.selectSomeHeroByNameCount(name).size();
+        Page<Hero>heroPage = (Page)PageUtil.queryPage(currentPage,count,pageSize);
+        heroPage.setKeyWord_1(name);
+        List<Hero>heroList = heroMapper.selectPageHeroByName(heroPage);
         heroPage.setList(heroList);
         return heroPage;
     }

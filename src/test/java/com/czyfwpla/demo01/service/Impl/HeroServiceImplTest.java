@@ -26,5 +26,10 @@ public class HeroServiceImplTest {
     @Test
     public void selectAllHero() {
         Page<Hero>heroPage= heroService.selcetPageHero(2,6);
+
+    }
+    @Test
+    public void selectPageHeroByName(){
+        Page<Hero>heroPage = heroService.selcetPageHeroByName(1,6,"李白");
     }
 }

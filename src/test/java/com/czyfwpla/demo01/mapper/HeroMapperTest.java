@@ -42,18 +42,14 @@ public class HeroMapperTest {
           heroMapper.addHero(hero);
       }
     }
-  //  @Test
+    @Test
     public void selectHero() {
 
         Hero hero = heroMapper.selectHero("牛魔王");
         Assert.assertNotNull(hero);
         Assert.assertEquals(1,1);
     }
-    //@Test
-    public void selectAllUser(){
-        List<Hero>heroList = heroMapper.selectAllHero();
-        Assert.assertNotNull(heroList);
-    }
+
     @Test
     public void deleteHeroById(){
 
@@ -69,16 +65,13 @@ public class HeroMapperTest {
     public  void selectHeroById(){
       Hero hero = heroMapper.selectHeroById("201544902039");
     }
+
     @Test
-    public void selectSomeHero(){
-       int countHero= heroMapper.countHero();
-        Page<Hero>page = (Page)PageUtil.queryPage(1,countHero,6);
-      List<Hero>heroList = heroMapper.selectSomeHero(page);
+    public void selectHeroByName(){
+      int countHero= heroMapper.selectSomeHeroByNameCount("李白").size();
+      Page<Hero>page = (Page)PageUtil.queryPage(1,countHero,6);
+      page.setKeyWord_1("李白");
+      List<Hero>heroList = heroMapper.selectPageHeroByName(page);
       page.setList(heroList);
-      Assert.assertNotNull(heroList);
-    }
-    @Test
-    public void countHero(){
-      int count = heroMapper.countHero();
     }
 }

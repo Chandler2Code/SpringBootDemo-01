@@ -13,7 +13,16 @@ public class Page<T> {
   private int pageCount=1;//当前页
   private int totalPageCount;//总页数
   private int totalDataCount;//数据总量
+  private String keyWord_1=null;
   private List<T>list;//实体类数组
+
+  public String getKeyWord_1() {
+    return keyWord_1;
+  }
+
+  public void setKeyWord_1(String keyWord_1) {
+    this.keyWord_1 = keyWord_1;
+  }
 
   public int getFirstIndex() {
     return firstIndex;

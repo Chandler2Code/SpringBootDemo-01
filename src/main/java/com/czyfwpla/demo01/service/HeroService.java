@@ -13,9 +13,8 @@ import java.util.List;
 public interface HeroService {
     void addHero(Hero hero);
     Hero selectHero(String name);
-    List<Hero> selectAllHero();
     void deleteHeroById(String id);
-    void updateHero(Hero hero);
     Hero selectHeroById(String id);
     Page<Hero>selcetPageHero(Integer currentPage,int pageSize);
+    Page<Hero>selcetPageHeroByName(Integer currentPage,int pageSize,String name);
 }
