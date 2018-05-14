@@ -59,7 +59,7 @@
                         </thead>
                         <#list result.getList() as hero>
                         <tbody>
-                        <tr>
+                        <tr onclick="update(${hero.id})" class="selectHover">
                             <td>
                                 ${hero.id}
                             </td>
@@ -99,12 +99,17 @@
     <div class="infoPage">
         <div class="col-md-12 column">
             <ul class="pagination pull-right">
-                <li id="top">
-                    <a href="/demo01/hero/info?currentPage=${result.getPageCount()-1}">上一页</a>
-                </li>
-                <li id="bottom">
-                    <a href="/demo01/hero/info?currentPage=${result.getPageCount()+1}">下一页</a>
-                </li>
+                <#if result.getPageCount() =1>
+                    <li class="disabled"><a href="#">上一页</a></li>
+                <#else>
+                    <li><a href="/demo01/hero/info?currentPage=${result.getPageCount()-1}">上一页</a></li>
+                </#if>
+                <li class="disabled"><a href="#">第${result.getPageCount()}页：共${result.getTotalPageCount()}页</a></li>
+                <#if result.getPageCount() =result.getTotalPageCount()>
+                    <li class="disabled"><a href="#">下一页</a></li>
+                <#else>
+                    <li><a href="/demo01/hero/info?currentPage=${result.getPageCount()+1}">下一页</a></li>
+                </#if>
             </ul>
         </div>
     </div>
@@ -149,13 +154,6 @@ var pageUrl="/demo01/hero/info?currentPage=";
 var updateUrl="/demo01/hero/update?id=";
 var selectUrl="/demo01/hero/select?name=";
 $(function () {
-    var currentpage = ${result.getPageCount()};
-    if(currentpage<=1){
-        $("#top").addClass("disabled");
-    }
-    if(currentpage>=${result.getTotalPageCount()}){
-        $("#bottom").addClass("disabled");
-    }
     $("#goBack").click(function () {
         $("#add").hide();
     })
@@ -177,6 +175,12 @@ $(function () {
 </script>
 </body>
 <style>
+    .selectHover{
+        cursor: pointer;
+    }
+    .selectHover:hover{
+        background: red;
+    }
     .addHeroForm{
        position: absolute;
         display: none;
