@@ -45,11 +45,11 @@
         FROM hero
         limit #{firstIndex},#{pageSize}
     </select>
-    <delete id="deleteHeroByName" parameterType="java.lang.String">
+    <delete id="deleteHeroById" parameterType="java.lang.String">
         DELETE
         FROM hero
         WHERE
-        name = #{name,jdbcType=VARCHAR}
+        id = #{id,jdbcType=VARCHAR}
     </delete>
     <update id="updateHero"  parameterType="com.czyfwpla.demo01.model.Hero">
         UPDATE hero

@@ -36,8 +36,8 @@ public class HeroServiceImpl implements HeroService {
     }
 
     @Override
-    public void deleteHeroByName(String name) {
-        heroMapper.deleteHeroByName(name);
+    public void deleteHeroById(String id) {
+        heroMapper.deleteHeroById(id);
     }
 
     @Override

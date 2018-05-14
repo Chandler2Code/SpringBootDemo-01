@@ -8,6 +8,11 @@
     <div class="infoTitle">
         <h1>王者荣耀英雄简介</h1>
     </div>
+    <div class="infoAdd">
+        <div class="col-md-12 column">
+            <button type="button" class="btn btn-default btn-primary" onclick="addHero()">新增</button>
+        </div>
+    </div>
     <div class="infoContent">
         <div class="container">
             <div class="row clearfix">
@@ -74,10 +79,8 @@
                             </td>
                             <td>
                                 <button type="button" class="btn btn-default">修改</button>
-                                <button type="button" class="btn btn-default btn-danger">删除</button>
-
+                                <button type="button" class="btn btn-default btn-danger" onclick="deleteHoerById(${hero.id})">删除</button>
                             </td>
-
                         </tr>
                         </#list>
                         </tbody>
@@ -98,26 +101,82 @@
             </ul>
         </div>
     </div>
+    <div class="addHeroForm" id="add">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <form role="form" method="post" action="/demo01/hero/add">
+                    <div class="form-group">
+                        <label for="name">英雄名字</label><input type="text" class="form-control" name="name" id="name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">性别</label><input type="text" class="form-control" name="sex" id="sex" />
+                    </div>
+                    <div class="form-group">
+                        <label for="viability">生存能力</label><input type="text" class="form-control" name="viability" id="viability" />
+                    </div>
+                    <div class="form-group">
+                        <label for="skillEffect">技能效果</label><input type="text" class="form-control" name="skillEffect" id="skillEffect" />
+                    </div>
+                    <div class="form-group">
+                        <label for="attackCapability">攻击力</label><input type="text" class="form-control"  name="attackCapability" id="attackCapability" />
+                    </div>
+                    <div class="form-group">
+                        <label for="difficultStart">上手难度</label><input type="text" class="form-control" name="difficultStart" id="difficultStart" />
+                    </div>
+                    <div class="form-group">
+                        <label for="recommendations">使用简介</label><input type="text" class="form-control" name="recommendations" id="recommendations" />
+                    </div>
+                    <button type="submit" class="btn btn-default">确认提交</button>
+                </form>
+            </div>
+        </div>
+        <div class="pull-right"><button type="button" class="btn btn-default btn-inverse" id="goBack">取消</button></div>
+    </div>
 </div>
 
 <script src="../jquery/dist/jquery.js"></script>
 <script src="../bootstrap/js/bootstrap.js"></script>
 <script>
+var deleUrl="/demo01/hero/delete?id=";
+var pageUrl="/demo01/hero/info?currentPage=";
 $(function () {
     var currentpage = ${result.getPageCount()};
     if(currentpage<=1){
-       $("#top").hide();
+        $("#top").addClass("disabled");
     }
     if(currentpage>=${result.getTotalPageCount()}){
         $("#bottom").addClass("disabled");
     }
-})
+    $("#goBack").click(function () {
+        $("#add").hide();
+    })
+ })
+    function deleteHoerById(id) {
+        location.href=deleUrl+id;
+    }
+    function addHero(){
+       $("#add").show();
+    }
 </script>
 </body>
 <style>
+    .addHeroForm{
+       position: absolute;
+        display: none;
+        top: 1;
+        left: 35%;
+        width: 30%;
+        height: 88%;
+        border-radius: 10px;
+        padding: 30px;
+        background: #eee;
+    }
     *{
         margin: 0;
         padding: 0;
+    }
+    .addHero{
+
     }
     .infoPage{
         height: 10%;
@@ -126,6 +185,11 @@ $(function () {
         height: 10%;
         text-align: center;
         padding-top: 10px;
+    }
+    .infoAdd{
+        height: 5%;
+        text-align: right;
+        padding-top: 30px;
     }
     .infoContent{
         /*height: 60%;*/

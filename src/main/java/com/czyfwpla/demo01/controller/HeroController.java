@@ -2,12 +2,11 @@ package com.czyfwpla.demo01.controller;
 
 import com.czyfwpla.demo01.model.Hero;
 import com.czyfwpla.demo01.service.HeroService;
+import com.czyfwpla.demo01.util.NumberUtil;
 import com.czyfwpla.demo01.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -32,5 +31,31 @@ public class HeroController {
         Page<Hero>heroPage=heroService.selcetPageHero(currentPage,pageSize);
         mv.addObject("result",heroPage);
         return mv;
+    }
+    @GetMapping("/delete")
+    public ModelAndView deleteHero(@RequestParam("id")String id){
+        heroService.deleteHeroById(id);
+        return new ModelAndView("redirect:"+"/hero/info?currentPage=1");
+    }
+    @RequestMapping("/add")
+    public ModelAndView addHero(@RequestParam("name")String name,
+                                @RequestParam("sex")String sex,
+                                @RequestParam("viability") Integer viability,
+                                @RequestParam("skillEffect") Integer skillEffect,
+                                @RequestParam("attackCapability") Integer attackCapability,
+                                @RequestParam("difficultStart") Integer difficultStart,
+                                @RequestParam("recommendations")String recommendations){
+
+        Hero hero = new Hero();
+        hero.setId(NumberUtil.genUniqueKeyByTitle());
+        hero.setName(name);
+        hero.setSex(sex);
+        hero.setViability(viability);
+        hero.setSkillEffect(skillEffect);
+        hero.setAttackCapability(attackCapability);
+        hero.setDifficultStart(difficultStart);
+        hero.setRecommendations(recommendations);
+        heroService.addHero(hero);
+        return new ModelAndView("redirect:"+"/hero/info?currentPage=1");
     }
 }

@@ -54,11 +54,12 @@ public class HeroMapperTest {
         List<Hero>heroList = heroMapper.selectAllHero();
         Assert.assertNotNull(heroList);
     }
-   // @Test
-    public void deleteHeroByName(){
-        heroMapper.deleteHeroByName("李白");
+    @Test
+    public void deleteHeroById(){
+
+      heroMapper.deleteHeroById("201544901026");
     }
-   // @Test
+    @Test
     public void updateHero(){
       Hero hero = heroMapper.selectHero("牛魔王");
        hero.setViability(100);
