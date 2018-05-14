@@ -59,7 +59,7 @@
                         </thead>
                         <#list result.getList() as hero>
                         <tbody>
-                        <tr class="success">
+                        <tr>
                             <td>
                                 ${hero.id}
                             </td>
@@ -163,6 +163,7 @@ $(function () {
         var name=$("#sname").val();
         location.href=selectUrl+name;
     })
+    $("tr:odd").addClass("success");
  })
     function deleteHoerById(id) {
         location.href=deleUrl+id;
