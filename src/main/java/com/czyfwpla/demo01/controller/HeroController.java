@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 /**
  * @Auther: Chandler
@@ -25,7 +24,7 @@ public class HeroController {
     private HeroService heroService;
 
     @GetMapping("/info")
-    public ModelAndView heroInfo(@RequestParam("currentPage")Integer currentPage){
+    public ModelAndView heroInfo(@RequestParam(defaultValue = "1",value = "currentPage")Integer currentPage){
         ModelAndView mv = new ModelAndView("info");
         int pageSize = 10;
         Page<Hero>heroPage=heroService.selcetPageHero(currentPage,pageSize);
@@ -57,5 +56,12 @@ public class HeroController {
         hero.setRecommendations(recommendations);
         heroService.addHero(hero);
         return new ModelAndView("redirect:"+"/hero/info?currentPage=1");
+    }
+    @GetMapping("/update")
+    public ModelAndView updateInfo(@RequestParam("id")String id){
+        ModelAndView modelAndView = new ModelAndView("updateInfo");
+        Hero hero = heroService.selectHeroById(id);
+        modelAndView.addObject("result",hero);
+        return modelAndView;
     }
 }

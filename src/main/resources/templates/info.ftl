@@ -65,7 +65,6 @@
                                ${hero.viability}
                             </td>
                             <td>
-                            <#--技能效果100-->
                             ${hero.skillEffect}
                             </td>
                             <td>
@@ -78,7 +77,7 @@
                                 ${hero.recommendations}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-default">修改</button>
+                                <button type="button" class="btn btn-default" onclick="update(${hero.id})">修改</button>
                                 <button type="button" class="btn btn-default btn-danger" onclick="deleteHoerById(${hero.id})">删除</button>
                             </td>
                         </tr>
@@ -139,6 +138,7 @@
 <script>
 var deleUrl="/demo01/hero/delete?id=";
 var pageUrl="/demo01/hero/info?currentPage=";
+var updateUrl="/demo01/hero/update?id=";
 $(function () {
     var currentpage = ${result.getPageCount()};
     if(currentpage<=1){
@@ -157,13 +157,16 @@ $(function () {
     function addHero(){
        $("#add").show();
     }
+    function update(id) {
+        location.href=updateUrl+id;
+    }
 </script>
 </body>
 <style>
     .addHeroForm{
        position: absolute;
         display: none;
-        top: 1;
+        top: 1%;
         left: 35%;
         width: 30%;
         height: 88%;
