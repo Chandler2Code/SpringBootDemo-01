@@ -1,11 +1,11 @@
-package com.czyfwpla.demo01.model;
+package com.czyfwpla.demo01.DTO;
 
 /**
  * @Auther: Chandler
  * @Date: 2018/5/22 00:02
  * @Description:
  */
-public class Drug {
+public class DrugDTO {
     private String Name;
     private String Dose;
 
@@ -25,7 +25,7 @@ public class Drug {
         Dose = dose;
     }
 
-    public Drug(String name, String dose) {
+    public DrugDTO(String name, String dose) {
         Name = name;
         Dose = dose;
     }

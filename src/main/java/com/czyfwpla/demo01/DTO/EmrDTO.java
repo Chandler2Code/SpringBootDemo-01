@@ -1,12 +1,13 @@
-package com.czyfwpla.demo01.model;
+package com.czyfwpla.demo01.DTO;
+
+import java.util.List;
 
 /**
  * @Auther: Chandler
- * @Date: 2018/5/22 23:39
+ * @Date: 2018/5/21 22:31
  * @Description:
  */
-public class Emr {
-    private String EmrId;
+public class EmrDTO {
     private String SecTion;
     private String Time;
     private String Name;
@@ -23,54 +24,14 @@ public class Emr {
     private String Zhifa;
     private String BingW;
     private String Bxing;
-    private String RecipelId;
+    private List<DrugDTO> drugDTOS;
 
-    public String getEmrId() {
-        return EmrId;
+    public List<DrugDTO> getDrugDTOS() {
+        return drugDTOS;
     }
 
-    public void setEmrId(String emrId) {
-        EmrId = emrId;
-    }
-
-    public String getRecipelId() {
-        return RecipelId;
-    }
-
-    public void setRecipelId(String recipelId) {
-        RecipelId = recipelId;
-    }
-
-    public String getSecTion() {
-        return SecTion;
-    }
-
-    public void setSecTion(String secTion) {
-        SecTion = secTion;
-    }
-
-    public String getTime() {
-        return Time;
-    }
-
-    public void setTime(String time) {
-        Time = time;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSex() {
-        return Sex;
-    }
-
-    public void setSex(String sex) {
-        Sex = sex;
+    public void setDrugDTOS(List<DrugDTO> drugDTOS) {
+        this.drugDTOS = drugDTOS;
     }
 
     public String getAge() {
@@ -81,14 +42,6 @@ public class Emr {
         Age = age;
     }
 
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
     public String getIdCard() {
         return IdCard;
     }
@@ -96,6 +49,7 @@ public class Emr {
     public void setIdCard(String idCard) {
         IdCard = idCard;
     }
+
 
     public String getUnit() {
         return Unit;
@@ -167,5 +121,45 @@ public class Emr {
 
     public void setBxing(String bxing) {
         Bxing = bxing;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public String getSex() {
+        return Sex;
+    }
+
+    public void setSex(String sex) {
+        Sex = sex;
+    }
+
+    public String getSecTion() {
+        return SecTion;
+    }
+
+    public void setSecTion(String secTion) {
+        SecTion = secTion;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 }
