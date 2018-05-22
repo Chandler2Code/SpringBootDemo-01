@@ -24,7 +24,6 @@ public class EmrXmlUtilTest {
 
     @Test
     public void createEmr(){
-
         Emr emr = new Emr();
         emr.setSecTion("儿科门诊");
         emr.setTime("2016-01-21 08:07");
@@ -47,7 +46,13 @@ public class EmrXmlUtilTest {
         Drug drug2 =new Drug("附子","12g");
         drugs.add(drug1);
         drugs.add(drug2);
+        emr.setDrugs(drugs);
         EmrXmlUtil.createXml(emr);
+    }
+
+    @Test
+    public void writeEmr(){
+        EmrXmlUtil.writeEmr();
     }
 
 }
