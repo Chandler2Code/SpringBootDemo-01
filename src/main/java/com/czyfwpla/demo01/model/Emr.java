@@ -23,7 +23,15 @@ public class Emr {
     private String Zhifa;
     private String BingW;
     private String Bxing;
-    private String RecipelId;
+    private String RecipelNumber;
+
+    public String getRecipelNumber() {
+        return RecipelNumber;
+    }
+
+    public void setRecipelNumber(String recipelNumber) {
+        RecipelNumber = recipelNumber;
+    }
 
     public String getEmrId() {
         return EmrId;
@@ -33,13 +41,6 @@ public class Emr {
         EmrId = emrId;
     }
 
-    public String getRecipelId() {
-        return RecipelId;
-    }
-
-    public void setRecipelId(String recipelId) {
-        RecipelId = recipelId;
-    }
 
     public String getSecTion() {
         return SecTion;

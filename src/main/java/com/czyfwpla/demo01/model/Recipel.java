@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Recipel {
     private String RecipelId;
-    private String Name;
+    private String RecipelName;
     private Date cteateTime;
     private Date updateTime;
 
@@ -21,12 +21,12 @@ public class Recipel {
         RecipelId = recipelId;
     }
 
-    public String getName() {
-        return Name;
+    public String getRecipelName() {
+        return RecipelName;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setRecipelName(String recipelName) {
+        RecipelName = recipelName;
     }
 
     public Date getCteateTime() {

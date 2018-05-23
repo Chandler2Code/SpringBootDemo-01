@@ -1,6 +1,6 @@
 package com.czyfwpla.demo01.mapper;
 
-import com.czyfwpla.demo01.model.RecipelDetial;
+import com.czyfwpla.demo01.model.RecipelDetail;
 
 /**
  * @Auther: Chandler
@@ -9,5 +9,5 @@ import com.czyfwpla.demo01.model.RecipelDetial;
  */
 public interface RecipelDetailMapper {
     //一、增加处方明细
-    void addRecipelDtail(RecipelDetial recipelDetial);
+    void addRecipelDetail(RecipelDetail recipelDetail);
 }

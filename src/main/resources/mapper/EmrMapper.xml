@@ -19,16 +19,16 @@
         <id column="Ywgms" property="Ywgms" jdbcType="VARCHAR" />
         <id column="BingW" property="BingW" jdbcType="VARCHAR" />
         <id column="Bxing" property="Bxing" jdbcType="VARCHAR" />
-        <id column="RecipelId" property="RecipelId" jdbcType="VARCHAR" />
+        <id column="RecipelNumber" property="RecipelNumber" jdbcType="VARCHAR" />
     </resultMap>
 
     <insert id="addEmr" parameterType="com.czyfwpla.demo01.model.Emr" >
         INSERT INTO
         emr
-        (EmrId,SecTion,Time,Name,Sex,Age,Phone,IdCard,Unit,Zhushu,Sizhen,Lczd,Zxing,Ywgms,BingW,Bxing,RecipelId)
+        (EmrId,SecTion,Time,Name,Sex,Age,Phone,IdCard,Unit,Zhushu,Sizhen,Lczd,Zxing,Ywgms,BingW,Bxing,RecipelNumber)
         VALUES
         (#{EmrId}, #{SecTion},#{Time},#{Name},#{Sex},
         #{Age},#{Phone}, #{IdCard},#{Unit},#{Zhushu},#{Sizhen},#{Lczd},#{Zxing}, #{Ywgms},
-         #{BingW},#{Bxing}, #{RecipelId})
+         #{BingW},#{Bxing}, #{RecipelNumber})
     </insert>
 </mapper>

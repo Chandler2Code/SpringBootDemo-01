@@ -3,14 +3,14 @@
 <mapper namespace="com.czyfwpla.demo01.mapper.RecipelMapper" >
 
     <resultMap id="BaseResultMap" type="com.czyfwpla.demo01.model.Recipel">
-        <id column="RecipelId" property="id" jdbcType="VARCHAR" />
-        <id column="Name" property="name" jdbcType="VARCHAR" />
+        <id column="RecipelId" property="RecipelId" jdbcType="VARCHAR" />
+        <id column="RecipelName" property="RecipelName" jdbcType="VARCHAR" />
     </resultMap>
     <insert id="addRecipel" parameterType="com.czyfwpla.demo01.model.Recipel" >
         INSERT INTO
         recipel
-        (RecipelId,Name)
+        (RecipelId,RecipelName)
         VALUES
-        (#{RecipelId}, #{Name})
+        (#{RecipelId}, #{RecipelName})
     </insert>
 </mapper>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.czyfwpla.demo01.mapper.RecipelMapper" >
+<mapper namespace="com.czyfwpla.demo01.mapper.RecipelDetailMapper" >
 
-    <resultMap id="BaseResultMap" type="com.czyfwpla.demo01.model.RecipelDetial">
-        <id column="RecipelDetialId" property="ecipelDetialId" jdbcType="VARCHAR" />
-        <id column="RecipelId" property="RecipelId" jdbcType="VARCHAR" />
+    <resultMap id="BaseResultMap" type="com.czyfwpla.demo01.model.RecipelDetail">
+        <id column="RecipelDetailId" property="RecipelDetailId" jdbcType="VARCHAR" />
+        <id column="RecipelDetailNumber" property="RecipelDetailNumber" jdbcType="VARCHAR" />
         <id column="DrugName" property="DrugName" jdbcType="VARCHAR" />
         <id column="DrugDose" property="DrugDose" jdbcType="VARCHAR" />
     </resultMap>
-    <insert id="addRecipelDetail" parameterType="com.czyfwpla.demo01.model.RecipelDetial" >
+    <insert id="addRecipelDetail" parameterType="com.czyfwpla.demo01.model.RecipelDetail" >
         INSERT INTO
         recipelDetail
-        (RecipelDetialId,RecipelId,DrugName,DrugDose)
+        (RecipelDetailId,RecipelDetailNumber,DrugName,DrugDose)
         VALUES
-        (#{RecipelDetialId},#{RecipelId}, #{DrugName}, #{DrugDose})
+        (#{RecipelDetailId},#{RecipelDetailNumber}, #{DrugName}, #{DrugDose})
     </insert>
 </mapper>

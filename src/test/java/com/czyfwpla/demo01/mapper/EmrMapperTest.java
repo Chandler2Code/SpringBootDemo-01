@@ -2,14 +2,13 @@ package com.czyfwpla.demo01.mapper;
 
 import com.czyfwpla.demo01.model.Emr;
 import com.czyfwpla.demo01.model.Recipel;
-import com.czyfwpla.demo01.model.RecipelDetial;
+import com.czyfwpla.demo01.model.RecipelDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
 
 /**
  * @Auther: Chandler
@@ -25,13 +24,14 @@ public class EmrMapperTest {
     private  EmrMapper mapper;
     @Autowired
     private RecipelMapper recipelMapper;
+
     @Autowired
     private RecipelDetailMapper recipelDetailMapper;
 
     @Test
     public void addEmr() {
         Emr emr =new Emr();
-        emr.setEmrId("1315");
+        emr.setEmrId("1316");
         emr.setSecTion("儿科门诊");
         emr.setTime("2116-7-21 :08:07");
         emr.setName("李思思");
@@ -48,24 +48,25 @@ public class EmrMapperTest {
         emr.setZhifa("^^^");
         emr.setBingW("^^^");
         emr.setBxing("88888");
-        emr.setRecipelId("20154490");
+        emr.setRecipelNumber("20154490");
         mapper.addEmr(emr);
     }
+
     @Test
     public void addRecipel(){
         Recipel recipel = new Recipel();
-        recipel.setRecipelId("20154490");
-        recipel.setName("四逆汤");
+        recipel.setRecipelName("白虎汤");
+        recipel.setRecipelId("20154492");
         recipelMapper.addRecipel(recipel);
     }
+
     @Test
     public void addRecipelDetail(){
-        RecipelDetial recipelDetial =new RecipelDetial();
-        recipelDetial.setReceipelId("20154490");
-        recipelDetial.setRecipelDetialId("45464797");
-        recipelDetial.setDrugName("附子");
-        recipelDetial.setDrugDose("5g");
-        recipelDetailMapper.addRecipelDtail(recipelDetial);
-
+        RecipelDetail recipelDetail = new RecipelDetail();
+        recipelDetail.setRecipelDetailNumber("20154491");
+        recipelDetail.setRecipelDetailId("33552652");
+        recipelDetail.setDrugDose("5g");
+        recipelDetail.setDrugName("蒲公英");
+        recipelDetailMapper.addRecipelDetail(recipelDetail);
     }
 }
