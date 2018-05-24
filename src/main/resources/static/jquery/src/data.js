@@ -34,7 +34,7 @@ function getData( data ) {
 		return null;
 	}
 
-	// Only convert to a number if it doesn't change the string
+	// Only convertAndWrite to a number if it doesn't change the string
 	if ( data === +data + "" ) {
 		return +data;
 	}
